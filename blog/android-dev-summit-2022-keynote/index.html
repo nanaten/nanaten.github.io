@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Android Dev Summit Keynote まとめ | m.coder&#39;s Blog</title><meta name="description" content="Android Dev Summit まとめ その1"><link rel="canonical" href="https://nanaten.github.io/blog/android-dev-summit-2022-keynote/"><link rel="icon" href="/favicon.ico"><meta property="og:title" content="Android Dev Summit Keynote まとめ | m.coder's Blog"><meta property="og:description" content="Android Dev Summit まとめ その1"><meta property="og:type" content="article"><meta property="og:url" content="https://nanaten.github.io/blog/android-dev-summit-2022-keynote/"><meta property="og:image" content="https://nanaten.github.io/ogp-image-default.png"><meta name="twitter:card" content="summary"><meta name="twitter:creator" content="@_m_coder"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+JP:wght@400;600&display=swap" rel="stylesheet"><script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ4Y7BWNGK"></script><script>(function(){const GA_MEASUREMENT_ID = "G-GQ4Y7BWNGK";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', GA_MEASUREMENT_ID);
+    })();</script><link rel="stylesheet" href="/_astro/Base.BgdxDaYR.css"></head><body><header class="header"><div class="shell header__inner"><a class="wordmark" href="/">m.coder</a><!-- 「Apps」リンクはルートにアプリ一覧の区画(id="apps")が入る P6 で追加する --><nav class="nav" aria-label="サイト"><a class="nav__link nav__link--current" href="/blog/" aria-current="page">Blog</a></nav></div></header><main class="shell"><article><div class="post-head"><p class="post-head__date"><time datetime="2022-11-13">2022/11/13</time></p><h1 class="post-head__title">Android Dev Summit Keynote まとめ</h1><p class="post-head__desc">Android Dev Summit まとめ その1</p></div><div class="prose"><h2 id="概要">概要</h2>
+<p><a href="https://youtu.be/Og2p9LczE3A" rel="noopener noreferrer" target="_blank">Android Dev Summit Keynote</a>まとめ</p>
+<ul>
+<li>3つのテーマについてお話する
+<ul>
+<li>最新のAndroid開発</li>
+<li>マルチデバイスの世界</li>
+<li>Androidプラットフォームの最新のアップデート</li>
+</ul>
+</li>
+<li>Googleに入ったばかりの人を Newglerというらしい👀</li>
+<li>Androidコミュニティを通じて、 ML Kit を使って偽札検知機を作った学生の話</li>
+</ul>
+<h2 id="最新のandroid開発mad">最新のAndroid開発(MAD)</h2>
+<ul>
+<li>Compose for Android TV の最新のアルファ版がリリースされる</li>
+<li>Playストアのトップ1000のアプリ中、160のアプリで Compose が使われている</li>
+<li>Cash App は今後すべての機能を Compose で開発する予定</li>
+<li>Compose のバージョン個別管理に伴う Compose BOM の導入</li>
+<li>Android Basics トレーニングコースを改訂し、初心者の人に Compose を触ってもらいやすくした</li>
+<li>Android Studio Flamingo によるライブコーディング
+<ul>
+<li>BOMの実践</li>
+<li>デバイスミラーリング機能</li>
+<li>Material 3 API の <code>scrollBehavior</code> 紹介</li>
+<li><code>Brush.linearGradient</code> によるテキストのグラデーション</li>
+<li>ReComposition の回数を教えてくれる Layout Inspector
+<ul>
+<li>デモがうまくいかない…</li>
+<li>うまくいった！</li>
+<li>AnimatedVisibility で Recomposition 回数が確認できる</li>
+</ul>
+</li>
+<li>Compose パフォーマンス改善のためのツール紹介
+<ul>
+<li>Benchmark</li>
+<li>Fragment 1.4 や Activity 1.6 のパフォーマンス改善紹介</li>
+<li>Baseline Profiles</li>
+</ul>
+</li>
+<li>App Quality Insights
+<ul>
+<li>アプリに発生している問題点をすばやく確認可能</li>
+<li>IDEから対応中の旨をチームに知らせることができる</li>
+<li>問題が解決したらクローズすることも可能</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="wear-os">Wear OS</h2>
+<ul>
+<li>Wear OS 3 リリース</li>
+<li>Compose for Wear OS 1.0 のリリース
+<ul>
+<li>今後の Wear OS アプリ開発には Compose を推奨</li>
+</ul>
+</li>
+<li>水泳トラッキングアプリ構築のライブコーディング
+<ul>
+<li>ScalingLazyColumn</li>
+<li>デバイスのサイズに合わせて自動的にスケーリングされる</li>
+<li>ヘルスサービスは電力効率が最適化されている（のでバッテリー駆動時間を心配する必要はない）</li>
+<li>収集したヘルスデータはヘルスコネクトに一括管理される</li>
+</ul>
+</li>
+</ul>
+<h2 id="タブレットラージスクリーン">タブレット＆ラージスクリーン</h2>
+<ul>
+<li>Pixel Tablet 2023年発売予定</li>
+<li>Android Studio の Large Screen 用アップデート
+<ul>
+<li>サイズ変更可能なデバイスエミュレータ</li>
+<li>Chrome Book でアプリをテストするための新しいデスクトップエミュレータ</li>
+</ul>
+</li>
+<li>Playストア自体の Large Screen 対応アップデート
+<ul>
+<li>他のデバイスからアプリの遠隔インストールが可能</li>
+</ul>
+</li>
+<li>developer.android.com に新しいギャラリーをオープン
+<ul>
+<li>アプリのデザインガイドなどが用意されている</li>
+<li>大画面アプリの事例紹介</li>
+</ul>
+</li>
+<li>SlidingPaneLayout を使って開発したアプリ紹介
+<ul>
+<li>Layout Validation による Lint 警告の例紹介</li>
+<li>NavRail と SlidingPaneLayout を使ったマルチサイズ対応アプリ開発</li>
+</ul>
+</li>
+<li>Compose によるマルチサイズ対応
+<ul>
+<li>マルチプレビュー機能</li>
+</ul>
+</li>
+</ul>
+<h2 id="android-プラットフォーム">Android プラットフォーム</h2>
+<ul>
+<li>Android 13
+<ul>
+<li>パーソナライゼーション
+<ul>
+<li>アプリごとの言語設定導入
+<ul>
+<li>locale-config による言語対応</li>
+<li>Manifest に locale-config を追加することでアプリごとの言語設定が有効になる</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>プライバシー
+<ul>
+<li>新しい PhotoPicker API
+<ul>
+<li>ユーザーが明示的に共有したいイメージを選択可能</li>
+<li>PickVisualMedia で PhotoPicker を管理可能</li>
+<li>Android 11 から対応</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>通知権限
+<ul>
+<li>APIレベル33をターゲットにすると通知の権限取得のタイミングを指定可能</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Android SDK アップグレードアシスタントツール
+<ul>
+<li>Android Studio Flamingo で利用可能</li>
+<li>アップグレードするバージョンごとのドキュメントが表示される
+<ul>
+<li>例えば Android 12 にアップグレードするための、マイグレーションが必要な重要事項など</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul></div><nav class="post-nav" aria-label="前後の記事"><div class="post-nav__item post-nav__item--prev"><span class="post-nav__label">← 前の記事</span><a class="post-nav__title" href="/blog/droidkaigi-2022/">DroidKaigiに初めてオフライン参加した話</a></div><div class="post-nav__item post-nav__item--next"><span class="post-nav__label">次の記事 →</span><a class="post-nav__title" href="/blog/for-four-years/">Androidエンジニアになってから4年経った振り返り</a></div></nav><aside class="bio"><img src="/_astro/profile-pic.D5hVtBqa_Z243gQL.webp" alt loading="lazy" decoding="async" width="112" height="112" class="bio__image"><div><p class="bio__name">m.coder</p><p class="bio__role">Android App Developer / Engineering Manager</p><ul class="bio__links"><li><a href="https://zenn.dev/m_coder">Zenn</a></li><li><a href="https://github.com/nanaten">GitHub</a></li><li><a href="https://x.com/_m_coder">X</a></li></ul></div></aside></article></main><footer class="footer"><div class="shell footer__inner">© m.coder</div></footer></body></html>

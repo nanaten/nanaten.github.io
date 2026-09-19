@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AWS 初心者は AWS Cloud Quest だけで Cloud Practitioner に合格できるか | m.coder&#39;s Blog</title><meta name="description" content="フラー株式会社 Advent Calendar 2023 5日目"><link rel="canonical" href="https://nanaten.github.io/blog/aws-cloud-quest-practitioner/"><link rel="icon" href="/favicon.ico"><meta property="og:title" content="AWS 初心者は AWS Cloud Quest だけで Cloud Practitioner に合格できるか | m.coder's Blog"><meta property="og:description" content="フラー株式会社 Advent Calendar 2023 5日目"><meta property="og:type" content="article"><meta property="og:url" content="https://nanaten.github.io/blog/aws-cloud-quest-practitioner/"><meta property="og:image" content="https://nanaten.github.io/ogp-image-default.png"><meta name="twitter:card" content="summary"><meta name="twitter:creator" content="@_m_coder"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+JP:wght@400;600&display=swap" rel="stylesheet"><script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ4Y7BWNGK"></script><script>(function(){const GA_MEASUREMENT_ID = "G-GQ4Y7BWNGK";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', GA_MEASUREMENT_ID);
+    })();</script><link rel="stylesheet" href="/_astro/Base.BgdxDaYR.css"></head><body><header class="header"><div class="shell header__inner"><a class="wordmark" href="/">m.coder</a><!-- 「Apps」リンクはルートにアプリ一覧の区画(id="apps")が入る P6 で追加する --><nav class="nav" aria-label="サイト"><a class="nav__link nav__link--current" href="/blog/" aria-current="page">Blog</a></nav></div></header><main class="shell"><article><div class="post-head"><p class="post-head__date"><time datetime="2023-12-05">2023/12/05</time></p><h1 class="post-head__title">AWS 初心者は AWS Cloud Quest だけで Cloud Practitioner に合格できるか</h1><p class="post-head__desc">フラー株式会社 Advent Calendar 2023 5日目</p></div><div class="prose"><h2 id="はじめに">はじめに</h2>
+<p>これは <a href="https://qiita.com/advent-calendar/2023/fuller-inc" rel="noopener noreferrer" target="_blank">フラー株式会社 Advent Calendar 2023</a> の5日目の記事です。4日目は <a href="https://qiita.com/Nao1215" rel="noopener noreferrer" target="_blank">Nao1215</a> さんの <a href="https://debimate.jp/2023/12/03/%e3%80%90golang%e3%80%91hottest-%e3%83%a6%e3%83%8b%e3%83%83%e3%83%88%e3%83%86%e3%82%b9%e3%83%88%e3%81%ae%e3%82%a8%e3%83%a9%e3%83%bc%e3%83%a1%e3%83%83%e3%82%bb%e3%83%bc%e3%82%b8%e3%82%92%e6%8a%bd/" rel="noopener noreferrer" target="_blank">「【Golang】hottest – ユニットテストのエラーメッセージを抽出するCLI／GitHub Actionsを作った話」</a> でした。</p>
+<h2 id="aws-cloud-quest">AWS Cloud Quest</h2>
+<p>2022年3月に AWS が <a href="https://aws.amazon.com/jp/training/digital/aws-cloud-quest/" rel="noopener noreferrer" target="_blank">AWS Cloud Quest</a> を公開しました。これは何かというと、AWS のサービスや構築方法について、<strong>ゲーム内で、ストーリーに沿って出題されるソリューション構築に関する課題を、実際のAWSのアカウントを使用しながら解いていく、RPGテイストのコンテンツ</strong>（公式ブログより）です。</p>
+<p>そして2023年10月、AWS Cloud Questの<a href="https://aws.amazon.com/jp/blogs/news/aws-cloud-quest-jp-is-now-available/" rel="noopener noreferrer" target="_blank">「Cloud Practitioner」が日本語対応しました。</a>これはアカウント登録さえすれば誰でも無料でプレイできます。</p>
+<p>以下が AWS Cloud Quest のゲーム内画面です。（<a href="https://aws.amazon.com/jp/blogs/news/aws-cloud-quest-jp-is-now-available/" rel="noopener noreferrer" target="_blank">公式ブログより抜粋</a>）</p>
+<img src="./aws-quest-01.png" alt="AWS Quest 1" width="600">
+<img src="./aws-quest-02.png" alt="AWS Quest 2" width="600">
+<img src="./aws-quest-03.png" alt="AWS Quest 3" width="600">
+<p>これらの画像を見てみなさんはどう思ったでしょうか。</p>
+<p>わたしはこう思いました。「<strong>マジでク〇ゲーみたいな見た目だけど、これだけやれば Cloud Practitioner に合格できたりするんか？</strong>」と。</p>
+<p>RPGをプレイするだけで AWS の基礎知識が身につくならお得です。ちょうど AWS の資格に挑戦してみようと思った時期だったので、実際に試してみました。</p>
+<h2 id="自分のステータス">自分のステータス</h2>
+<p>試験前の自分のステータスとしては、以下のような感じです</p>
+<ul>
+<li>Androidエンジニア</li>
+<li>サーバーサイドやインフラは未経験
+<ul>
+<li>サーバーサイド Kotlin を触ってみたことぐらいはある</li>
+</ul>
+</li>
+<li>AWS の EC2 や S3 などのメジャーなサービスは聞いたことがあるし、どういうサービスなのかもざっくりは知っている
+<ul>
+<li>EC2 はクラウドコンピューティングやな、S3 はストレージサービスやな、とかそれぐらい</li>
+<li>実際に触ったことはない</li>
+</ul>
+</li>
+</ul>
+<h2 id="最初に結論">最初に結論</h2>
+<p>結論から言うと<strong>ダメでした</strong>。</p>
+<img src="aws-rejection.jpg" alt="試験スコア" width="600">
+<p>スコア 659/1000 ということで一見惜しいように見えますが、<strong>「これはアカン」と数日前に気づき</strong>最後に過去問を解き始めたので惜しいように見えています。おそらく AWS Cloud Quest のみで挑んでいたらもう少し低かったと思います。</p>
+<h2 id="何がダメだったか">何がダメだったか</h2>
+<p>とにかく<strong>試験範囲に対して学べるサービスの数が少なすぎ</strong>ました。</p>
+<p>AWS Cloud Quest は文字通りクエスト方式で顧客の要望に応じて AWS サービスを構築していくのですが、メインクエストで実際に登場するサービスや概念はだいたい以下のような感じでした。</p>
+<ul>
+<li>Amazon EC2</li>
+<li>Amazon EC2 Auto Scaling</li>
+<li>Amazon S3</li>
+<li>Amazon VPC</li>
+<li>Amazon Elastic File System (EFS)</li>
+<li>Amazon RDS</li>
+<li>Amazon DynamoDB</li>
+<li>AWS Identity and Access Management (IAM)</li>
+<li>Amazon Elastic Load Balancing (ELB)</li>
+<li>AWS Pricing Calculator</li>
+</ul>
+<p>対して、Cloud Practitioner の試験範囲の一部が以下になります。
+<a href="https://d1.awsstatic.com/ja_JP/training-and-certification/docs-cloud-practitioner/AWS-Certified-Cloud-Practitioner_Exam-Guide.pdf" rel="noopener noreferrer" target="_blank">公式のシラバス</a>より抜粋しました。</p>
+<h3 id="分析">分析:</h3>
+<ul>
+<li>Amazon Athena</li>
+<li>AWS Data Exchange</li>
+<li>Amazon EMR</li>
+<li>AWS Glue</li>
+<li>Amazon Kinesis</li>
+<li>Amazon Managed Streaming for Apache Kafka - (Amazon MSK)</li>
+<li>Amazon OpenSearch Service</li>
+<li>Amazon QuickSight</li>
+<li>Amazon Redshift</li>
+</ul>
+<h3 id="アプリケーション統合">アプリケーション統合:</h3>
+<ul>
+<li>Amazon EventBridge</li>
+<li>Amazon Simple Notification Service (Amazon SNS)</li>
+<li>Amazon Simple Queue Service (Amazon SQS)</li>
+<li>AWS Step Functions</li>
+</ul>
+<h3 id="ビジネスアプリケーション">ビジネスアプリケーション:</h3>
+<ul>
+<li>Amazon Connect</li>
+<li>Amazon Simple Email Service (Amazon SES)</li>
+</ul>
+<h3 id="クラウド財務管理">クラウド財務管理:</h3>
+<ul>
+<li>AWS Billing Conductor</li>
+<li>AWS Budgets</li>
+<li>AWS Cost and Usage Report</li>
+<li>AWS Cost Explorer</li>
+<li>AWS Marketplace</li>
+</ul>
+<h3 id="コンピューティング">コンピューティング:</h3>
+<ul>
+<li>AWS Batch</li>
+<li>Amazon EC2</li>
+<li>AWS Elastic Beanstalk</li>
+<li>Amazon Lightsail</li>
+<li>AWS Local Zones</li>
+<li>AWS Outposts</li>
+<li>AWS Wavelength</li>
+</ul>
+<h3 id="コンテナ">コンテナ:</h3>
+<ul>
+<li>Amazon Elastic Container Registry (Amazon ECR)</li>
+<li>Amazon Elastic Container Service (Amazon ECS)</li>
+<li>Amazon Elastic Kubernetes Service (Amazon EKS)</li>
+</ul>
+<h3 id="カスタマーエンゲージメント">カスタマーエンゲージメント:</h3>
+<ul>
+<li>スタートアップ向け AWS Activate</li>
+<li>AWS IQ</li>
+<li>AWS Managed Services (AMS)</li>
+<li>AWS サポート</li>
+</ul>
+<h3 id="データベース">データベース:</h3>
+<ul>
+<li>Amazon Aurora</li>
+<li>Amazon DynamoDB</li>
+<li>Amazon MemoryDB for Redis</li>
+<li>Amazon Neptune</li>
+<li>Amazon RDS</li>
+</ul>
+<h3 id="デベロッパーツール">デベロッパーツール:</h3>
+<ul>
+<li>AWS AppConfig</li>
+<li>AWS CLI</li>
+<li>AWS Cloud9</li>
+<li>AWS CloudShell</li>
+<li>AWS CodeArtifact</li>
+<li>AWS CodeBuild</li>
+<li>AWS CodeCommit</li>
+<li>AWS CodeDeploy</li>
+<li>AWS CodePipeline</li>
+<li>AWS CodeStar</li>
+<li>AWS X-Ray</li>
+</ul>
+<h3 id="エンドユーザーコンピューティング">エンドユーザーコンピューティング:</h3>
+<ul>
+<li>Amazon AppStream 2.0</li>
+<li>Amazon WorkSpaces</li>
+<li>Amazon WorkSpaces Web</li>
+</ul>
+<h3 id="フロントエンドのウェブとモバイル">フロントエンドのウェブとモバイル:</h3>
+<ul>
+<li>AWS Amplify</li>
+<li>AWS AppSync</li>
+<li>AWS Device Farm</li>
+</ul>
+<h3 id="iot">IoT:</h3>
+<ul>
+<li>AWS IoT Core</li>
+<li>AWS IoT Greengrass</li>
+</ul>
+<h3 id="機械学習">機械学習:</h3>
+<ul>
+<li>Amazon Comprehend</li>
+<li>Amazon Kendra</li>
+<li>Amazon Lex</li>
+<li>Amazon Polly</li>
+<li>Amazon Rekognition</li>
+<li>Amazon SageMaker</li>
+</ul>
+<p>…他</p>
+<p>長いので省略していますが、これでだいたい試験範囲サービスの<strong>半分ぐらい</strong>です。</p>
+<p>いかがでしょうか、どれだけ AWS Cloud Quest で学べる範囲が狭いかお分かりいただけるでしょうか。</p>
+<p>AWS Cloud Quest をクリアした後、<a href="https://explore.skillbuilder.aws/learn/course/16792/AWS%2520Certified%2520Cloud%2520Practitioner%2520Official%2520Practice%2520Question%2520Set%2520%28CLF-C02-%2520Japanese%29" rel="noopener noreferrer" target="_blank">公式の無料練習問題</a>を解いてみた時の<strong>絶望感</strong>は忘れられません。知ってるサービス全然出てこないんだもん…</p>
+<h2 id="つらみ">つらみ</h2>
+<p>ゲーム好きな人ならスクショを見た段階で嫌な予感がするでしょうが、ゲームとして<strong>圧倒的につまらない</strong>です。</p>
+<p>頭にびっくりマークの吹き出しが表示されているキャラクターがメインクエストを提供してくれますが、その人物を探すのが地味に大変です。クエストがある場所を探そうとマップを開くと、一度全画面のマップに切り替わり、マップを閉じてフィールドに戻ると<strong>カメラがリセットされる</strong>ので、操作キャラクターが今どっちを向いているのか頻繁に見失います。</p>
+<p>さらにマップには向いている方向は表示されないため、自分が方向音痴なのも相まって<strong>闇雲にとりあえず動いてみて進んだ方向にキャラクターは向いている</strong>という推測をする羽目になり、無駄に時間を消費しました。</p>
+<p>また、クエストクリア時に「好きな建物を選んでね！」みたいな表示が出て、選択した建物が建造されるというカスタマイズ要素があるのですが、「そもそもこのグラフィックではどんな建物が立ってもなあ」という気持ちになりますし、<strong>そもそもどこに建物が立ったのかもよくわからない</strong>ままゲームをクリアしてしまいました。</p>
+<p>そしてクエストをクリアすると謎に「ビルダーレベル」なるものが上がりますが、そのレベルが<strong>何の役に立つのか最後まで分かりませんでした</strong>。</p>
+<p>このような要素に囲まれながらなんとかクリアした結果、試験には合格しないという、なんとも悲しい結末が待っていました。</p>
+<h2 id="余談">余談</h2>
+<p>全然いいところが無いように書きましたが、クエストに挑戦した時に AWS のデモ環境が用意され、実際にコンソールから触って手を動かしながら学べるのは良かったです。</p>
+<p>自分で環境を構築しようとするとどうしても課金が気になりますし、誤ってインスタンスを落とし忘れたりして無駄な料金が発生してしまうのでは…という恐怖とは無縁で手を動かせるのは利点だなと思いました。</p>
+<p>マップ移動という無駄な要素を省いて、クエストだけプレイするような形式だったらもっと良かったかもしれません。あとはクエストの数をもっと増やしてくれれば…</p>
+<h2 id="おわりに">おわりに</h2>
+<p>というわけで、AWS 初心者は AWS Cloud Quest だけプレイしても <strong>Cloud Practitioner には合格できません</strong>。試験に受かりたい場合はちゃんと過去問などの対策をしましょう。</p>
+<p>AWS Cloud Practitioner 試験は折を見て再チャレンジしようかと思います。</p>
+<p>6日目は <a href="https://qiita.com/shogo82148" rel="noopener noreferrer" target="_blank">@shogo82148</a> さんの「今年もアドベントカレンダー（物理）買いました」です。お楽しみに！</p></div><nav class="post-nav" aria-label="前後の記事"><div class="post-nav__item post-nav__item--prev"><span class="post-nav__label">← 前の記事</span><a class="post-nav__title" href="/blog/my-home/">家を買った</a></div><div class="post-nav__item post-nav__item--next"><span class="post-nav__label">次の記事 →</span><a class="post-nav__title" href="/blog/look-back-2023/">2023年を振り返る</a></div></nav><aside class="bio"><img src="/_astro/profile-pic.D5hVtBqa_Z243gQL.webp" alt loading="lazy" decoding="async" width="112" height="112" class="bio__image"><div><p class="bio__name">m.coder</p><p class="bio__role">Android App Developer / Engineering Manager</p><ul class="bio__links"><li><a href="https://zenn.dev/m_coder">Zenn</a></li><li><a href="https://github.com/nanaten">GitHub</a></li><li><a href="https://x.com/_m_coder">X</a></li></ul></div></aside></article></main><footer class="footer"><div class="shell footer__inner">© m.coder</div></footer></body></html>

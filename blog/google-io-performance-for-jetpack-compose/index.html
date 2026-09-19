@@ -1,0 +1,227 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Google I/O Common Performance Gotchas in Jetpack Compose まとめ | m.coder&#39;s Blog</title><meta name="description" content="Google I/O まとめ その4"><link rel="canonical" href="https://nanaten.github.io/blog/google-io-performance-for-jetpack-compose/"><link rel="icon" href="/favicon.ico"><meta property="og:title" content="Google I/O Common Performance Gotchas in Jetpack Compose まとめ | m.coder's Blog"><meta property="og:description" content="Google I/O まとめ その4"><meta property="og:type" content="article"><meta property="og:url" content="https://nanaten.github.io/blog/google-io-performance-for-jetpack-compose/"><meta property="og:image" content="https://nanaten.github.io/ogp-image-default.png"><meta name="twitter:card" content="summary"><meta name="twitter:creator" content="@_m_coder"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+JP:wght@400;600&display=swap" rel="stylesheet"><script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ4Y7BWNGK"></script><script>(function(){const GA_MEASUREMENT_ID = "G-GQ4Y7BWNGK";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', GA_MEASUREMENT_ID);
+    })();</script><link rel="stylesheet" href="/_astro/Base.BgdxDaYR.css"></head><body><header class="header"><div class="shell header__inner"><a class="wordmark" href="/">m.coder</a><!-- 「Apps」リンクはルートにアプリ一覧の区画(id="apps")が入る P6 で追加する --><nav class="nav" aria-label="サイト"><a class="nav__link nav__link--current" href="/blog/" aria-current="page">Blog</a></nav></div></header><main class="shell"><article><div class="post-head"><p class="post-head__date"><time datetime="2022-06-05">2022/06/05</time></p><h1 class="post-head__title">Google I/O Common Performance Gotchas in Jetpack Compose まとめ</h1><p class="post-head__desc">Google I/O まとめ その4</p></div><div class="prose"><h2 id="概要">概要</h2>
+<p>主にAndroid開発者目線でGoogle I/Oをまとめていきます。</p>
+<p>4回目 <a href="https://io.google/2022/program/213421b6-9873-464f-9b36-38eeb232a854/" rel="noopener noreferrer" target="_blank">Common Performance Gotchas in Jetpack Compose</a></p>
+<h2 id="内容">内容</h2>
+<p>Compose アプリのパフォーマンスを最大化するために、避けるべきいくつかの落とし穴について紹介。</p>
+<h3 id="configration">Configration</h3>
+<ul>
+<li>アプリを構成する方法
+<ul>
+<li>Compose アプリのパフォーマンスを評価するためには、R8最適化を有効にし、リリースモードで実行することが重要です</li>
+<li>デバッグモードを有効にしているとアプリケーション速度が低下するため</li>
+<li>アプリのパフォーマンス問題に気づいた時は、リリースモードでも同じ問題が発生するかを確認する必要があります</li>
+</ul>
+</li>
+</ul>
+<h3 id="gotchas">Gotchas</h3>
+<ul>
+<li>
+<p>Something to remember</p>
+<ul>
+<li>例として、名前のリストを表示する連絡先アプリを取りあげます。</li>
+</ul>
+<img src="./contacts-list-01.png" width="500">
+<ul>
+<li>
+<p>Re-Compose は頻繁に実行される可能性があるため、それを念頭に置いて実装する必要があります。</p>
+</li>
+<li>
+<p>この例では、新しい行が追加されるたびに連絡先リストを再利用します。 Re-Compose され、コードが全て再実行されます。</p>
+</li>
+<li>
+<p>ソートがこのスコープ内にあるため、Re-Compose のたびにソートが呼び出されます。</p>
+</li>
+<li>
+<p><code>remember</code> を利用して、必要な場合のみ実行されるようにできます。</p>
+<img src="./contacts-list-02.png" width="500">
+</li>
+<li>
+<p><code>remember</code> に連絡先リストと <code>sortComparator</code> をセットすることで、いずれかが変更されるたびにリストが再分類されますが、Re-Composeのたびに再構築されるわけではありません。</p>
+</li>
+<li>
+<p>さらに最適化するには、この並べ替えを ViewModel, もしくは DataSource へ移動し、完全に Composable から外すことで、オーバーヘッドを最小限に抑えることができます。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>LazyList Key</p>
+<ul>
+<li>リストに戻りましょう。</li>
+</ul>
+<img src="./contacts-list-03.png" width="400">
+<ul>
+<li>LazyList でキーを定義して、どのアイテムが変更されたかを知るのに役立てられます。</li>
+<li>キーを提供しない場合、Compose はそのアイテムの位置をキーとして使用します。</li>
+<li>アイテムがリスト内を移動すると、その後のすべてのアイテムも Re-Compose されるため、パフォーマンスに悪影響を与える可能性があります。</li>
+<li>キーの提供は簡単です。 <code>key</code> ラムダを <code>items</code> 関数に追加するとキーを提供できます。各キーは一意である必要があります。</li>
+</ul>
+<img src="./contacts-list-04.png" width="500">
+<ul>
+<li>これで、アイテムがリスト内で移動すると、 Compose はどのアイテムが移動したかを認識し、そのアイテムを Re-Compose するだけで済みます。</li>
+<li>キーは、 LazyList の最適化以外にも使用されます。詳細については <a href="https://io.google/2022/program/14bb63ef-2dd1-460a-9871-5f51ec1afec9/" rel="noopener noreferrer" target="_blank">Lazy Layouts in Compose</a>を確認してください。</li>
+</ul>
+</li>
+<li>
+<p>Deriving change</p>
+<ul>
+<li>次に、私たちのデザイナーはスクロールしてトップへ戻るボタンの追加を我々に依頼しました。リストが下へスクロールされた後にのみ表示されるようにします。</li>
+</ul>
+<img src="./contacts-list-05.png" width="500">
+<ul>
+<li>
+<p>Compose の宣言型プログラミングにより、これが簡単になります。 <code>firstVisibleItemIndex</code> が 0 より大きい場合に <code>true</code> になる <code>showButton</code> という Boolean 変数を追加できます。これを <code>AnimatedVisibility</code> のパラメーターとして使用できます。</p>
+</li>
+<li>
+<p>しかし、問題があります。 LazyList は、全てのスクロールの全てのフレームで <code>listState</code> を更新し、 <code>listState</code> を読み取っているため、不要な大量の Re-Compose が起こります。</p>
+</li>
+<li>
+<p><code>showButton</code> 変数の場合、<code>firstVisibleItemIndex</code> が 0 から 0 以外に変わる時だけを気にします。 <code>derivedStateOf</code> がここで役立ちます。</p>
+</li>
+<li>
+<p><code>derivedStateOf</code> は、頻繁に更新される <code>listState</code> を取得し、それらの変更を必要なものだけにバッファリングします。</p>
+</li>
+</ul>
+<img src="./contacts-list-06.png" width="500">
+<ul>
+<li>この場合、条件 <code>firstVisibleItemIndex > 0</code> を <code>derivedStateOf</code> でラップします。この条件が実際に変更されたときのみ Re-Compose します。つまり、リストを下にスクロールしたときに1回、リストを上にスクロールしたときにもう一度 Re-Compose します。</li>
+<li>状態を Bool 値に変換する時はいつでも <code>derivedStateOf</code> が役立つかどうかを検討してください。</li>
+<li>何が <code>derivedStateOf</code> に適していないかを覚えておくことが重要です。ある State から変数を作成するたびに <code>derivedStateOf</code> を使用する必要はありません。</li>
+</ul>
+<img src="./contacts-list-07.png" width="500">
+<ul>
+<li>この例では、連絡先リストのアイテム数を知りたいと思います。これは変更をバッファリングしないため、つまり <code>contactCount</code> 変数はカウント変更の State と同じように変更する必要があるため、 <code>derivedStateOf</code> はわずかなオーバーヘッドを生み出し、冗長になります。</li>
+</ul>
+</li>
+<li>
+<p>Procrastination</p>
+<img src="./contacts-list-08.png" width="500">
+<ul>
+<li>私たちのデザイナーは、UIの背景をアニメーションするように依頼しました。ここでは、シアンとマゼンタの間をアニメーションします。</li>
+<li>Compose でこれらのアニメーションを作成するのは非常に簡単です。ですが、ここで実行できる潜在的な最適化があります。</li>
+</ul>
+<img src="./contacts-list-09.png" width="500">
+<ul>
+<li>
+<p>ここでは、 Compose に必要以上の作業を行うように依頼しています。アニメーションでは、このコードを全てのフレームで Re-Compose する必要があります。</p>
+</li>
+<li>
+<p>Composition　について</p>
+<ul>
+<li>ここで、Composition が必要ない理由を理解するためには、 Composition がどのように機能するかを理解する必要があります。</li>
+<li>Compose には、 Composition, Layout, Draw の3つの主要なフェーズがあります。</li>
+<li>最初のフェーズ Composition では、 <code>Composable</code> 関数が実行されます。このフェーズでは、アプリケーションのコンテンツを作成または更新し、次の2つのフェーズで何を行うかを定義します。</li>
+<li>2番目のフェーズである Layout では、Composition で構成されたコンテンツが測定され、画面が表示される場所に配置されます。このフェーズでは、全ての <code>Modifier</code> と <code>Text</code>, <code>Column</code>, <code>Row</code> などの他の <code>Composable</code> 関数の呼び出しが考慮され、1回のパスですべてのコンテンツが測定および配置されます。</li>
+<li>このフェーズについては2021年の Android Studio Dev サミット 「<a href="https://www.youtube.com/watch?v=zMKMwh9gZuI" rel="noopener noreferrer" target="_blank">Deepdive into Jetpack Compose Layouts</a>」で詳しく説明されています。</li>
+<li>最終フェーズの Draw では、アプリケーションのキャンバスにコンテンツを描画するために、実際のグラフィック命令が発行されます。この命令は、線、円弧、長方形、画像、テキストなどのプリミティブな命令です。そしてそれらは、前のフェーズである Layout によって決定された場所に描画されます。</li>
+<li>これらの3つのフェーズは、読み取るデータが変更されるすべてのフレームで繰り返されます。</li>
+</ul>
+<img src="./contacts-list-10.png" width="600">
+</li>
+<li>
+<p>ただし、データが変更されない場合は、1つ以上のフェーズをスキップできます。</p>
+</li>
+</ul>
+<img src="./contacts-list-08.png" width="500">
+<ul>
+<li>このアプリケーションでは、アニメーション化され、フレームごとに色が変化するため、フレームごとに Composition も行われます。色しか描画していないので、 Composition と Layout のフェーズをスキップして、 <code>Box</code> の色を新しい色で再描画できれば便利です。</li>
+</ul>
+</li>
+<li>
+<p>Reading State</p>
+<ul>
+<li>State の読み取りを必要になるまで延期することは Compose の重要な概念です。</li>
+<li>読み取りを延期すると、この場合のように、再実行する必要のある関数を減らすことができ、 Composition や Layout を完全にスキップできます。</li>
+</ul>
+<img src="./contacts-list-11.png" width="500">
+<ul>
+<li>このバージョンでは、 <code>background</code> の代わりに <code>drawBehind</code> を使用します。 <code>drawBehind</code> は、 Compose の draw フェーズ中に呼びだされる関数インスタンスを取ります。色の値が読み取られるのはこの時だけなので、色が変わったときに変更する必要があるのは draw フェーズの結果だけです。</li>
+<li>その後、 draw フェーズが再実行必要な唯一のフェーズになり、 Compose が Composition と Layout の両方をスキップできるようになります。</li>
+<li>ここでのマジックは、 Composable 関数ではなく、関数インスタンスの色の状態を読み取ることです。関数インスタンスは変更されないため、読み取る変数は同じです。</li>
+</ul>
+<img src="./contacts-list-12.png" width="400">
+<ul>
+<li>このような関数インスタンスで状態を読み取り、それをパラメーターとして渡すことは、この場合のようにフェーズをスキップできるようにするだけでなく、必要なコード量も減らすためにも使用できます。</li>
+<li>これを利用する1つの方法は、ネストによって関数インスタンスを暗黙的に作成することです。</li>
+</ul>
+<img src="./contacts-list-13.png" width="500">
+<ul>
+<li>ここでは、例えば連絡先の名前が変更された場合、 <code>Text</code> への呼び出しのみが再実行されます。 <code>ContactCard</code> と <code>MyCard</code> への呼び出しは連絡先の名前を読み取らないためスキップされます。 <code>Text</code> を呼び出すだけで、関数インスタンスにキャプチャされます。</li>
+</ul>
+</li>
+<li>
+<p>Running backwards</p>
+<ul>
+<li>この落とし穴は常に避けるべきコードです。</li>
+</ul>
+<img src="./contacts-list-14.png" width="500">
+<ul>
+<li>ここで設計者は、銀行取引とそれに対応する残高のリストを表示するように依頼しました。</li>
+<li>これを行うために、残高の現在の合計を保持し、トランザクションごとに更新してからトランザクションと新しい残高を表示します。ただし、これには問題があります。</li>
+<li>アプリケーションのシステムトレースを行った際に、メインスレッドが予想より遥かに Busy になっていることに気づきました。</li>
+<li>問題は、 <code>balance</code> を更新するための行であることに気づきました。このコードは、 Compose の重要な前提に反しています。</li>
+<li>Compose は値が読み取られると、Composition が完了するまで変更されないことを前提としています。Composition ですでに読み取られている値には絶対に書き込まないでください。</li>
+<li>すでに読み取られたデータの書き込みは、 Backwards write (逆書き込み) と呼ばれます。すべてのフレームで Re-Compose が発生する可能性があります。</li>
+</ul>
+<img src="./contacts-list-15.png" width="500">
+<ul>
+<li>Backwards write が起きているのは <code>balance</code> 更新行です。ただし、読み取りは <code>Text</code> 呼び出しでの書き込みの後に発生するように見えます。これはどのように Backwards write になっているのでしょう？</li>
+</ul>
+<img src="./contacts-list-16.png" width="500">
+<ul>
+<li>ループを展開すると Backwards write がより明確になります。読み取る前に <code>balance</code> へ書き込むのは問題ありません。 <code>balance</code> を取得するためのループ処理が原因で、 Composition は常に古くなっているとみなし、再実行する必要があります。</li>
+<li>Composition が古いと判断した場合、次のフレームに新しい Composition をスケジューリングします。その Composition が古いと判断された場合、 Composition は次のフレームへ無限にスケジュールを設定します。</li>
+</ul>
+<img src="./contacts-list-17.png" width="500">
+<ul>
+<li>これは <code>remember</code> を使用し、 State への書き込みを完全に回避する、より良いバージョンのコードです。このバージョンでは、 <code>Composable</code> 関数が最初に表示されたときに1回だけ実行されます。また、トランザクションが変更された場合のみ古くなったと見なされます。</li>
+<li>これの更に優れたバージョンは、前の並び替えの例のように ViewModel で <code>balance</code> を計算し、 Composition が開始される前でもこれらの計算を実行できるようにするバージョンです。</li>
+<li>Backwards write を避けるために、すでに読み取られた State に書き込みを行わないでください。</li>
+</ul>
+</li>
+<li>
+<p>Baseline Profiless</p>
+<ul>
+<li>Android Studio からアプリを実行すると、最初の数秒間はアプリがギクシャクしているように見えることに気づきました。しかしその後はスムーズに見えます。</li>
+<li>最初に、リリースモードとR8最適化で正しく構成されていることを確認しました。しかし、まだそれは起こります。</li>
+<li>Android Studio から実行している場合、コードが解釈されるため、起動時にパフォーマンスが低下することがよくあります。</li>
+<li>Baseline Profiles のおかげで、ほとんどの場合、ユーザーにはこれがありません。</li>
+<li>アプリに Baseline Profiles を追加すると、起動を高速化し、 Jank を減らし、パフォーマンスを向上させることができます。</li>
+<li>しかし、 Baseline Profiles とは正確には何でしょうか？</li>
+<li>Compose は、バンドルされていないライブラリであるため、Android の更新を待つことなく機能追加やバグ修正を行えます。しかしこれには少し欠点があります。</li>
+<li>Android はシステムリソースをアプリ間で共有します。これにより起動時間が短縮され、メモリ使用量が減少します。 Compose はこの共有を行いません。</li>
+<li>ユーザーが Play ストアからアプリをインストールすると、デバイスにダウンロードされたAPKには、すべてのコードに加えて、アプリにバンドルされるライブラリが含まれます。起動時にこのコードは Android ランタイムによって解釈され、マシンコードにコンパイルされます。このプロセスには時間がかかるため、パフォーマンスが低下する可能性があります。</li>
+<li>Play ストアにはこの状況を解決するために Cloud Profile という既存機能があります。Cloud Profile はアプリの起動を高速化するためのリストを提供します。これはアプリをアップデートするたびにクリアされます。</li>
+<li>Baseline Profiles は、Play ストアにこのリストを自分で提供する方法です。</li>
+</ul>
+<img src="./contacts-list-18.png" width="500">
+<ul>
+<li>ユーザーがアプリをダウンロードすると、 Play ストアに Baseline Profiles が含まれ、インストール時に常にプロファイルデータを利用できます。</li>
+<li>Compose には、デフォルトでAPKに独自の Baseline Profiles が付属しています。</li>
+<li>ただし、 Android Studio から実行する場合、 Baseline Profiles は含まれません。そのためローカルテストではこの利点はありません。</li>
+<li>Macrobenchmark ライブラリを利用して、 Baseline Profiles を有効にして起動するよう、アプリを構成できます。</li>
+<li>Baseline Profiles でパフォーマンスが向上しているかのテストには Macrobenchmark ライブラリを使用できます。</li>
+<li>Compose のサンプルアプリである Jetsnack にベースラインプロファイルを追加することで、起動パフォーマンスが 22% 向上します。</li>
+<li>Google Maps は平均起動時間を約30%改善しました。</li>
+<li>起動時のパフォーマンスだけではなく、Play ストアは検索ページの初期レンダリング時間を 40% 改善できました。</li>
+</ul>
+</li>
+</ul>
+<h3 id="まとめ">まとめ</h3>
+<p>パフォーマンス向上のために行うこと</p>
+<ol>
+<li>Configration</li>
+<li><code>remenber {}</code></li>
+<li>LazyList Key</li>
+<li><code>derivedStateOf {}</code></li>
+<li>Defer reads</li>
+<li>Backwards write</li>
+<li>Baseline Profiles</li>
+</ol></div><nav class="post-nav" aria-label="前後の記事"><div class="post-nav__item post-nav__item--prev"><span class="post-nav__label">← 前の記事</span><a class="post-nav__title" href="/blog/google-io-whats-new-in-jetpack/">Google I/O What&#39;s new in Jetpack まとめ</a></div><div class="post-nav__item post-nav__item--next"><span class="post-nav__label">次の記事 →</span><a class="post-nav__title" href="/blog/entered-university/">今年の春から大学生になったという話</a></div></nav><aside class="bio"><img src="/_astro/profile-pic.D5hVtBqa_Z243gQL.webp" alt loading="lazy" decoding="async" width="112" height="112" class="bio__image"><div><p class="bio__name">m.coder</p><p class="bio__role">Android App Developer / Engineering Manager</p><ul class="bio__links"><li><a href="https://zenn.dev/m_coder">Zenn</a></li><li><a href="https://github.com/nanaten">GitHub</a></li><li><a href="https://x.com/_m_coder">X</a></li></ul></div></aside></article></main><footer class="footer"><div class="shell footer__inner">© m.coder</div></footer></body></html>

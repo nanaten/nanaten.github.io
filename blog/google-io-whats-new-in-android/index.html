@@ -1,0 +1,270 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Google I/O What&#39;s new in Android まとめ | m.coder&#39;s Blog</title><meta name="description" content="Google I/O まとめ その2"><link rel="canonical" href="https://nanaten.github.io/blog/google-io-whats-new-in-android/"><link rel="icon" href="/favicon.ico"><meta property="og:title" content="Google I/O What's new in Android まとめ | m.coder's Blog"><meta property="og:description" content="Google I/O まとめ その2"><meta property="og:type" content="article"><meta property="og:url" content="https://nanaten.github.io/blog/google-io-whats-new-in-android/"><meta property="og:image" content="https://nanaten.github.io/ogp-image-default.png"><meta name="twitter:card" content="summary"><meta name="twitter:creator" content="@_m_coder"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+JP:wght@400;600&display=swap" rel="stylesheet"><script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ4Y7BWNGK"></script><script>(function(){const GA_MEASUREMENT_ID = "G-GQ4Y7BWNGK";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', GA_MEASUREMENT_ID);
+    })();</script><link rel="stylesheet" href="/_astro/Base.BgdxDaYR.css"></head><body><header class="header"><div class="shell header__inner"><a class="wordmark" href="/">m.coder</a><!-- 「Apps」リンクはルートにアプリ一覧の区画(id="apps")が入る P6 で追加する --><nav class="nav" aria-label="サイト"><a class="nav__link nav__link--current" href="/blog/" aria-current="page">Blog</a></nav></div></header><main class="shell"><article><div class="post-head"><p class="post-head__date"><time datetime="2022-05-26">2022/05/26</time></p><h1 class="post-head__title">Google I/O What&#39;s new in Android まとめ</h1><p class="post-head__desc">Google I/O まとめ その2</p></div><div class="prose"><h2 id="概要">概要</h2>
+<p>主にAndroid開発者目線でGoogle I/Oをまとめていきます。</p>
+<p>2回目 <a href="https://io.google/2022/program/4e81975b-46a2-4966-98d8-19fb4fb66f78/" rel="noopener noreferrer" target="_blank">What’s new in Android</a></p>
+<p>主に紹介されていた動画へのリンクをまとめてあります</p>
+<h2 id="jetpack">Jetpack</h2>
+<ul>
+<li><a href="https://io.google/2022/program/c7710536-a86d-42a6-b43e-e69ae76dbb34/" rel="noopener noreferrer" target="_blank">What’s new in Jetpack</a>
+<ul>
+<li>JankStats
+<ul>
+<li>アプリのパフォーマンスに関わる問題を追跡・分析できる</li>
+</ul>
+</li>
+<li>Room
+<ul>
+<li>2.5でFull-Kotlinに</li>
+<li>KSPの安定的なサポート</li>
+</ul>
+</li>
+<li>Navigation
+<ul>
+<li>Multiple-BackStack対応</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/c9085b18-4e8e-4183-b303-1d1716b0c070/" rel="noopener noreferrer" target="_blank">Fragments: The Good (non-deprecated) Parts</a>
+<ul>
+<li>Fragment の最新の変更内容を紹介</li>
+</ul>
+</li>
+<li>Jetpack Compose関連の動画
+<ul>
+<li><a href="https://io.google/2022/program/c7710536-a86d-42a6-b43e-e69ae76dbb34/" rel="noopener noreferrer" target="_blank">What’s new in Jetpack</a>
+<ul>
+<li>ダウンロード可能なFonts</li>
+<li>ネストされたスクロールの相互運用</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/213421b6-9873-464f-9b36-38eeb232a854/" rel="noopener noreferrer" target="_blank">Common Performance Gotchas in Jetpack Compose</a>
+<ul>
+<li>Compose のパフォーマンスを最大限活用する方法</li>
+<li>避けるべきパターンについて</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/14bb63ef-2dd1-460a-9871-5f51ec1afec9/" rel="noopener noreferrer" target="_blank">Lazy Layouts in Compose</a>
+<ul>
+<li>Lazy リストレイアウトについて</li>
+<li>レイアウトやスクロール位置の制御から実用的なものまで紹介</li>
+<li>Lazy grids が Stable に</li>
+<li>Lazy layout のカスタム</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/05c2523e-be40-4c63-8308-5379b9717a7c/" rel="noopener noreferrer" target="_blank">Basic Layout in Compose</a></li>
+<li><a href="https://io.google/2022/program/c9768969-9e81-4865-9dff-29a2ab1201ea/" rel="noopener noreferrer" target="_blank">Using State in Jetpack Compose</a>
+<ul>
+<li>ハンズオン形式で紹介</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="large-screenレスポンシブレイアウト対応">Large Screen（レスポンシブレイアウト）対応</h2>
+<p><a href="https://developer.android.com/large-screens" rel="noopener noreferrer" target="_blank">https://developer.android.com/large-screens</a></p>
+<ul>
+<li><a href="https://io.google/2022/program/222bf914-24e3-4478-be37-9d8162d6460e/" rel="noopener noreferrer" target="_blank">Designing Apps for Large Screens</a>
+<ul>
+<li>Canonical Layouts というレイアウトの概念について</li>
+<li>アプリを大画面向けにデザインするときに必要な考慮について</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/eb6e6fb3-b24d-4baf-a1d9-f176198fc595/" rel="noopener noreferrer" target="_blank">Update your app for the large screen</a>
+<ul>
+<li>Jetpack Window Manager 1.1について
+<ul>
+<li>ウィンドウを様々な画面サイズに最適化できる</li>
+</ul>
+</li>
+<li>複数 Activity を使用している場合は activity-embedding を利用可能</li>
+<li>Fragment を使用している場合は SlidingPaneLayout を利用可能</li>
+<li>DragAndDrop ライブラリをベータリリース</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/1351e983-465f-4b32-99e0-de0647240352/" rel="noopener noreferrer" target="_blank">Implementing Android apps for all screen sizes</a>
+<ul>
+<li>サンプルアプリ「NowInAndroid」がどのように構築されているかを紹介</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/a55aec14-5bda-47e0-b259-7a1f7bb366b8/" rel="noopener noreferrer" target="_blank">Input for all screens</a>
+<ul>
+<li>さまざまなデバイスでの入力に関する考慮事項のガイダンスを作成</li>
+<li>アプリ固有のキーボードショートカット、ホバー状態の設定、スタイラス入力など</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/95d82d1b-8cfe-4617-a9da-5806c72a4284/" rel="noopener noreferrer" target="_blank">Building Adaptive Layouts with SlidingPaneLayout</a>
+<ul>
+<li>SlidingPaneLayout を利用して画面領域を有効的に活用する方法を学ぶ</li>
+</ul>
+</li>
+</ul>
+<h2 id="android-13">Android 13</h2>
+<p><a href="https://developer.android.com/about/versions/13" rel="noopener noreferrer" target="_blank">https://developer.android.com/about/versions/13</a></p>
+<p>Android 13 beta2が利用可能に
+<img alt="Android 13 Milestone" loading="lazy" decoding="async" width="692" height="283" src="/_astro/android13-milestone.Cd1D1RE4_xu6hN.webp"></p>
+<ul>
+<li><a href="https://io.google/2022/program/b1812a3f-fa67-423e-85fa-4edb0bf54d30/" rel="noopener noreferrer" target="_blank">Developing Privacy User Centric Apps</a>
+<ul>
+<li>Android 13では通知の新しい権限が追加された
+<ul>
+<li><code>NotificationManager.areNotificationEnabled</code></li>
+</ul>
+</li>
+<li>READ_EXTERNAL_STORAGE廃止</li>
+<li>Photo Picker APIの新設
+<ul>
+<li>権限が必要ない</li>
+</ul>
+</li>
+<li>権限が不要になった場合に権限を取り消すAPIが追加される</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/3b5391ef-d824-4480-a619-30ee923dd0ce/" rel="noopener noreferrer" target="_blank">Overview of the Privacy Sandbox on Android</a>
+<ul>
+<li>アプリとは独立して広告関連のSDKを配布・インストールできるようにする</li>
+<li>広告関連のSDKがアクセスできるデータを制限できる？</li>
+<li>新しいプライバシー保護APIの導入</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/5c6a8dbb-7ac2-4c31-a707-0a16e8424970/" rel="noopener noreferrer" target="_blank">Back to the basics of System Back</a>
+<ul>
+<li>Android13から戻るボタンを有効にするかどうかManifestで制御できる
+<img alt="Back Button" loading="lazy" decoding="async" width="417" height="142" src="/_astro/back-button.D9BiAKi6_167Iim.webp"></li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/477adf14-7c6d-4710-9f19-b127421a396c/" rel="noopener noreferrer" target="_blank">Managing background work on Android</a>
+<ul>
+<li>App Restriction Levelという概念が新設されて、実行できるバックグラウンド作業に制限を設けられる</li>
+<li>特定のアプリがバッテリーを使いすぎている場合ユーザーに通知する</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/b767cad5-59ef-41c2-a9e6-b2dde514c243/" rel="noopener noreferrer" target="_blank">What’s new in Android Machine Learning</a>
+<ul>
+<li>MLKitを使用した機械学習の導入方法と Custom ML について紹介</li>
+<li>TensorFlowLite が Google Play Services を介して利用可能に</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/f4726bbd-d230-4574-abc6-211baa6aec35/" rel="noopener noreferrer" target="_blank">What’s new in Android Camera</a>
+<ul>
+<li>CameraX 1.1.0-RC</li>
+<li>WYSIWYGカメラコントロール</li>
+<li>HDRビデオキャプチャサポート</li>
+<li>OEM拡張機能のフォールバック。まずはBokeh（英語でもボケっていうんだすごい）をサポートする</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/f6863994-eab8-489f-8d62-82c8a9c486ab/" rel="noopener noreferrer" target="_blank">What’s new in Android Media</a>
+<ul>
+<li>Android13でHDRビデオサポート</li>
+<li>ExoPlayer 2.17で空間オーディオをサポートする</li>
+<li>Media 3 APIをリリース</li>
+<li>Jetpack Core Performance ライブラリを追加</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/11094c8f-f7c5-42a6-9e8f-df94e83f5d27/" rel="noopener noreferrer" target="_blank">Media Streaming with ExoPlayer</a>
+<ul>
+<li>ExoPlayer のハンズオン</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/b3818558-6f41-4ee9-b586-c8f1111a10ec/" rel="noopener noreferrer" target="_blank">What’s new in Accessibility for Android developers</a>
+<ul>
+<li>Jetpack Compose での自動タッチターゲットサイズ設定など</li>
+<li>Compose のセマンティックシステムについて掘り下げる</li>
+<li>Layout Inspector を使用してセマンティクス ツリーを検証する方法</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/02e77298-9eb9-4ee8-b82d-f3f02e19ac09/" rel="noopener noreferrer" target="_blank">Introducing Google Wallet and Developer API features</a>
+<ul>
+<li>チケットやワクチンパスなど、何でもWalletに保存できるようになった</li>
+<li>簡単に保存できるように新しいAndroidSDKをリリースする</li>
+<li>複数パスのグループ化やバウチャー付きのチケットに対応</li>
+</ul>
+</li>
+</ul>
+<h2 id="マルチデバイス対応">マルチデバイス対応</h2>
+<ul>
+<li><a href="https://io.google/2022/program/2d35bc51-fef8-4f4f-830f-0dba6d30e592/" rel="noopener noreferrer" target="_blank">Multi-device development</a>
+<ul>
+<li>クロスデバイス通信について</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/c4be021c-53ec-493e-a3c1-7db7a168317e/" rel="noopener noreferrer" target="_blank">Android solutions for seamless sign-in across devices</a>
+<ul>
+<li>BlockStore API  デバイストークンなどの転送、サインイン済みデバイスへの連携が簡単にできる</li>
+<li>OneTap API でデバイスへの登録が簡単になる</li>
+<li>PassKeys API パスワードを置き換えられる。端末交換にも対応</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/4d2987b9-4a84-4e4f-8203-93867d925737/" rel="noopener noreferrer" target="_blank">App quality on Google Play</a>
+<ul>
+<li>Playコンソールの最新APIについてなど</li>
+<li>Android Vitals
+<ul>
+<li>Android Vitalsで問題がバックグラウンドで発生したかフォアグラウンドで発生したかが分かるようになった</li>
+<li>VitalsとCrashlyticsの連携強化。データをCrashlyticsで直接表示できる</li>
+</ul>
+</li>
+<li>Prioritize
+<ul>
+<li>問題発生率を他のアプリと比較可能</li>
+</ul>
+</li>
+<li>デバイスカタログを刷新</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/87d1e16b-09ff-4f48-ad4e-eae333f78513/" rel="noopener noreferrer" target="_blank">Power your success with new acquisition, engagement and monetization tools</a>
+<ul>
+<li>Deeplink付きのカスタムストアリスト</li>
+<li>LiveOps ユーザーエンゲージメントの促進</li>
+<li>Playストアに設定可能な最低価格を下げた</li>
+<li>サブスクリプションの複雑さを緩和</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/7f0f4d16-b260-414d-9f2d-bd2e18ea469b/" rel="noopener noreferrer" target="_blank">Creating beautiful, power-efficient apps for WearOS</a>
+<ul>
+<li>Compose での WearOS 対応</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/cae72ae9-2516-4e89-b1a2-852f8e653046/" rel="noopener noreferrer" target="_blank">Introducing Health Connect by Android, new APIs for health and fitness</a>
+<ul>
+<li>Health Services API について</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/1e5d0560-24f2-4891-8991-0d93af8d9965/" rel="noopener noreferrer" target="_blank">What’s new with Android TV and Google TV</a>
+<ul>
+<li>4K UI サポートなど</li>
+<li>新しいピクチャインピクチャAPI</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/8276c69a-83cd-4cd8-bece-31231c3d8454/" rel="noopener noreferrer" target="_blank">What’s new with Android for Cars</a>
+<ul>
+<li>Car App Library 1.3 リリース</li>
+</ul>
+</li>
+</ul>
+<h2 id="開発者向けツール">開発者向けツール</h2>
+<ul>
+<li><a href="https://io.google/2022/program/8215c766-f097-4b18-bc97-5085d77c4dad/" rel="noopener noreferrer" target="_blank">What’s new in Android development tools</a>
+<ul>
+<li>Android Studio Bumblebee と Chipmunk の新機能を紹介</li>
+<li>Dolphin と Electric Eel の新機能デモ</li>
+</ul>
+</li>
+<li><a href="https://io.google/2022/program/2cf473b7-113e-4332-a469-8dfd815eb45b/" rel="noopener noreferrer" target="_blank">What’s new in app performance</a>
+<ul>
+<li>アプリのパフォーマンス計測に役立つツールの紹介</li>
+<li>Perfetto, Vitals, JankStatsなど</li>
+<li>Macrobenchmark ライブラリについて</li>
+<li>Baseline profiles について</li>
+<li>ART Module について</li>
+</ul>
+</li>
+<li>最後に <a href="https://io.google/2022/program/4e81975b-46a2-4966-98d8-19fb4fb66f78/" rel="noopener noreferrer" target="_blank">What’s new in Android</a> をご覧ください（無限ループ）</li>
+</ul></div><nav class="post-nav" aria-label="前後の記事"><div class="post-nav__item post-nav__item--prev"><span class="post-nav__label">← 前の記事</span><a class="post-nav__title" href="/blog/google-io-developers-keynote/">Google I/O Developer Keynote まとめ</a></div><div class="post-nav__item post-nav__item--next"><span class="post-nav__label">次の記事 →</span><a class="post-nav__title" href="/blog/google-io-whats-new-in-jetpack/">Google I/O What&#39;s new in Jetpack まとめ</a></div></nav><aside class="bio"><img src="/_astro/profile-pic.D5hVtBqa_Z243gQL.webp" alt loading="lazy" decoding="async" width="112" height="112" class="bio__image"><div><p class="bio__name">m.coder</p><p class="bio__role">Android App Developer / Engineering Manager</p><ul class="bio__links"><li><a href="https://zenn.dev/m_coder">Zenn</a></li><li><a href="https://github.com/nanaten">GitHub</a></li><li><a href="https://x.com/_m_coder">X</a></li></ul></div></aside></article></main><footer class="footer"><div class="shell footer__inner">© m.coder</div></footer></body></html>

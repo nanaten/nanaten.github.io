@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>テックリードになって半年でやったことを書く | m.coder&#39;s Blog</title><meta name="description" content="アドベントカレンダー25日目"><link rel="canonical" href="https://nanaten.github.io/blog/techlead-half-year/"><link rel="icon" href="/favicon.ico"><meta property="og:title" content="テックリードになって半年でやったことを書く | m.coder's Blog"><meta property="og:description" content="アドベントカレンダー25日目"><meta property="og:type" content="article"><meta property="og:url" content="https://nanaten.github.io/blog/techlead-half-year/"><meta property="og:image" content="https://nanaten.github.io/ogp-image-default.png"><meta name="twitter:card" content="summary"><meta name="twitter:creator" content="@_m_coder"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+JP:wght@400;600&display=swap" rel="stylesheet"><script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ4Y7BWNGK"></script><script>(function(){const GA_MEASUREMENT_ID = "G-GQ4Y7BWNGK";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', GA_MEASUREMENT_ID);
+    })();</script><link rel="stylesheet" href="/_astro/Base.BgdxDaYR.css"></head><body><header class="header"><div class="shell header__inner"><a class="wordmark" href="/">m.coder</a><!-- 「Apps」リンクはルートにアプリ一覧の区画(id="apps")が入る P6 で追加する --><nav class="nav" aria-label="サイト"><a class="nav__link nav__link--current" href="/blog/" aria-current="page">Blog</a></nav></div></header><main class="shell"><article><div class="post-head"><p class="post-head__date"><time datetime="2022-12-25">2022/12/25</time></p><h1 class="post-head__title">テックリードになって半年でやったことを書く</h1><p class="post-head__desc">アドベントカレンダー25日目</p></div><div class="prose"><h2 id="はじめに">はじめに</h2>
+<p>この記事は <a href="https://qiita.com/advent-calendar/2022/fuller-inc" rel="noopener noreferrer" target="_blank">フラー株式会社 Advent Calendar 2022</a> の最終日の記事です。24日目は <a href="https://qiita.com/SaturnR7" rel="noopener noreferrer" target="_blank">@SaturnR7</a> さんで <a href="https://qiita.com/SaturnR7/items/48b40782609d3faf8f5d" rel="noopener noreferrer" target="_blank">縦書きの日本語をウィジェットで表現したい</a> でした。</p>
+<h2 id="テックリードになって半年経った">テックリードになって半年経った</h2>
+<p>Android ユニットのテックリードになって半年経ったので、その間にやってきたことを書こうと思います。</p>
+<h2 id="テックリードについて">テックリードについて</h2>
+<p>会社によってテックリードがやることは様々だと思いますが、弊社のテックリードが行う業務をまず説明します。</p>
+<p>と言っても、明確に業務として行うと明文化されているものについては「Androidメンバーのスキル評価」これぐらいです。</p>
+<p>それ以外には Android ユニットで標準的に採用する技術の選定なども行いますが、あくまで基本的な指針（アーキテクチャは MVVM を推奨するなど）を定める程度で、技術選定の裁量は各案件をメインで担当するメンバーに委ねています。</p>
+<p>それ以外の業務は明確に「これをやれ」と定められているわけではなく、自然と「自分たちでユニット内や会社の（主に技術的な）課題を見つけて改善していく」というような動きになります。良く言えば裁量の大きい、悪く言えばふんわりとしたポジションです。（テックリードというポジション自体が出来て1年ぐらいなので、わりとまだ手探りな状態です）</p>
+<p>なので、業務として行う「スキル評価」の説明プラス、何に力を入れてこの半年やってきたのか、を書いていきます。</p>
+<h2 id="スキル評価とは">スキル評価とは</h2>
+<p>2022年12月時点でのフラーの評価制度には「パフォーマンス評価」と「スキル評価」の2軸があり、この2軸を総合的に判断して昇給や賞与額が決定されます。</p>
+<p>「パフォーマンス評価」というのは、雑に言えばプロジェクトや会社に対してどれぐらいバリューを発揮できたか？という評価で、各職種のユニット長が行います。例えば「プロジェクトの一メンバーとしてタスクをこなした人」と「プロジェクト全体をリードした人」であれば後者の方が評価が高くなるという感じです。</p>
+<p>「スキル評価」は、エンジニアとしてのスキルがどれぐらい高いか？という面を評価するもので、このスキル面をテックリードが評価します。こちらは例えば「あらかじめ決められた設計に従ってコードを書ける」人と「自分で一からアーキテクチャを設計できる」人であれば後者の人の方がスキル評価が高くなるという感じです。</p>
+<p>と言っても（怒られるかもしれませんが）「スキル評価とか何とか言っても最終的には結局お給料が上がるかどうかでしょ？」というひねくれた視点で評価制度を見ている部分があるので、「どうすれば皆の評価を上げられるか」という視点から逆算して目標を立てることが多いです。</p>
+<p>もちろん本人の伸ばしたいスキルは尊重しますが、それを「いかに会社（最終評価者）が評価しやすい形で目標・実績として言語化するか」という部分が評価する自分のお仕事かなという気がしています。<del>成長する人は何してても成長するし</del></p>
+<h2 id="その他やったこと">その他やったこと</h2>
+<p>今期力を入れた事は、「ドキュメンテーション」と「技術の標準化」です。（と言っても、どちらもまだ道半ばですが…）</p>
+<h3 id="背景">背景</h3>
+<p>弊社はいわゆる受託開発をメインにしている企業です。そのため複数の案件が常に並行して動いており、現在進行形で Android の開発業務が発生するプロジェクトだけ数えても10件近くはあります。（もちろん全ての案件がバリバリ新規開発として走っているわけではなく、保守運用フェーズなどでそこまで大きなタスクが発生しない案件もあります）</p>
+<p>これだけプロジェクトの数が多くなってくると、採用している技術やアーキテクチャもかなりバラつきが出てきます。開発開始時期が古く、Android の標準的な MVVM 構成になっていないプロジェクトもありますし、かと思えば新しいプロジェクトはフル Jetpack Compose で作られていたりします。</p>
+<p>捉えようによってはその時その時のトレンド技術を貪欲に取り入れていっていると言えなくもないのですが、やはり案件を跨いだ際のコンテキストスイッチなども大変ですし、今後も各プロジェクトを思い思いに管理していったら本当にカオスになる事は目に見えているので、せめて今後のプロジェクトだけでも（※）ある程度メンバー間で共通認識を持って開発を進めていきたいよね、という思いを持ったのが上記2点を推進した背景です。</p>
+<p>※理想は古いプロジェクトもどんどんリファクタなどを進めていける事なのですが、お客様からお金を頂戴して作業するのが受託開発の基本なので、歴史あるプロジェクトは各メンバーが手が空いた隙に本当に少しずつリファクタなどを進めているのが実情です。でもそんな制約がある中でもみんな頑張ってます。みんなえらい</p>
+<h3 id="やったこと1ドキュメンテーション">【やったこと1】ドキュメンテーション</h3>
+<p>Android ユニットのメンバーが少しずつ増えてきたこともあり、今まで各メンバーが案件ごとによしなにやっていた部分に関しても明文化した方がいいな、という雰囲気が生まれてきました。そういった誰かの「暗黙知」のようになっている部分をドキュメントとしてしっかりまとめて、運用方法が分からなくなった時などにその情報にアクセスできるようにする、というのが力を入れたこと1つ目です。</p>
+<p>直近でまとめたのは、「ライブラリの更新ってどういうタイミングでやればいい？」とかです。小さいことではありますが、開発プロジェクトが複数走る弊社のようなスタイルだと、こういう部分も言語化した方が後々助かるかと思ってまとめました。</p>
+<p>一つ大きなものとしては、「プロジェクトの初期環境構築時に Android エンジニアがやるべきこと」というドキュメントをまとめています。</p>
+<p>自社サービスの会社と違い、1年に2〜3件程度は新規開発プロジェクトが発足するので、「Android Studio で New Project する」〜「 <code>build.gradle</code> 周りを整備する」〜「CIやプロジェクトに必要なライブラリなどを入れる」などのいわゆる「環境構築作業」をする機会がまあまああります。それこそ入社1年目の社員に、経験としてこれらの環境構築を担当してもらうこともあります。</p>
+<p>そういう時に「はい、やっといて」ではあまりにも不親切ですし（※）、作業の指針になるものが無いと、慣れている人でも絶対に抜け漏れが発生するので、初期環境構築のやり方としてドキュメントにまとめることにしました。これは後述する「技術の標準化」とも関わってきます。</p>
+<p>※ちなみに今までは過去プロジェクトのPRを覗きながらやってました。プロジェクトもメンバーも多くなかったからこれでも回っていたんですね</p>
+<h3 id="やったこと2技術の標準化">【やったこと2】技術の標準化</h3>
+<p>「ある程度メンバー間で共通認識を持って開発を進めていきたい」という部分に対するアクションの1つとして、「なるべく採用する技術を各案件で揃えよう」という取り組みを行っています。これは元 Android テックリードであった <a href="https://okuzawats.com/" rel="noopener noreferrer" target="_blank">@okuzawats</a> さんが「標準設計の策定」や「ライブラリ選定基準の制定」などで進めてくださっていましたが、もう一歩進めて、 <a href="https://docs.github.com/ja/repositories/creating-and-managing-repositories/creating-a-template-repository" rel="noopener noreferrer" target="_blank">テンプレートリポジトリ</a> を運用できないか？と考えて少しずつ準備を進めています。</p>
+<p>これは Android プロジェクトを新規作成する際に、テンプレートリポジトリから作成すれば、基本的な CI/CD の構築や、Version Catalog の導入、主要なライブラリ（99%の案件で使う <a href="https://square.github.io/retrofit/" rel="noopener noreferrer" target="_blank">Retrofit</a> や <a href="https://developer.android.com/training/dependency-injection/hilt-android?hl=ja" rel="noopener noreferrer" target="_blank">Dagger Hilt</a> など）の導入などが予め完了している状態のプロジェクトが出来上がる、というものを目指しています。</p>
+<p>これで何が嬉しいかというと、例えば今までだと、「案件AではPRをオープンした時に ktlint と Android Lint が動くようにCIが設定されているが、案件Bでは ktlint しか動いていない」というような事があったのですが、今後の案件ではそのようなバラつきが可能な限り抑えられる、という効果を期待しています。</p>
+<p>そして、どうしてもボイラープレート的な部分が多くなってしまうこれらの作業時間を短縮し、浮いた工数を更なる改善に充てていきたいという意図があります。</p>
+<p>「プロジェクトの初期環境構築時に〜」と内容が被ってないか？というご意見もあるかと思いますが、テンプレートリポジトリに含まれる内容の実装手順がドキュメント化されたものが「プロジェクトの初期環境構築時に〜」なイメージです。これらを同時に進めることで、仮に今まで環境構築の経験が全く無いような Android エンジニアがアサインされたとしても、「このプロジェクトにはどういう設定がされているのか」がドキュメントから追えるようにしたいという気持ちがあるので、両方を同時に進めています。</p>
+<p>これらの施策がうまくいくかどうかは、実際に運用に乗せてみないと分かりませんが、「ひとまずやってみて、ダメだったらまた別の改善策を考えよう」というノリで進めています。</p>
+<p>以上が、テックリードになって半年でやったことです。</p>
+<h2 id="おまけ">おまけ</h2>
+<p>あともう一つ頑張ったことを忘れていまして、それは「Androidユニットの雰囲気を良くしよう！」です。どうせ働くなら楽しい方がいいに決まっているので（個人の感想）、ユニットのメンバーが困っていそうだったらすぐに飛んで行ったり、Slack や Zoom などで積極的に<del>ふざける</del>コミュニケーションをとるようにしました。</p>
+<p>もともと会社の中でも雰囲気のよいほうのユニットだったとは思うのですが、ここ半年で「Androidユニットの雰囲気、いいね」と社内のいろいろな人たちが言ってくださるようになり、非常に嬉しい限りです。</p>
+<p>もちろんこれはわたしだけの力ではなく、色々なコミュニケーション施策を考えて実施してくれた Android ユニット長や、その施策に積極的に関わってくれたメンバーのみんなのおかげだと思っています。ありがとうございました。これからもよろしくお願いします。</p>
+<h2 id="おわりに">おわりに</h2>
+<p>これで今年の <a href="https://qiita.com/advent-calendar/2022/fuller-inc" rel="noopener noreferrer" target="_blank">フラー株式会社 Advent Calendar</a> はおしまいです。毎年最終日は <a href="https://okuzawats.com/" rel="noopener noreferrer" target="_blank">@okuzawats</a> さんがトリを務めていましたが、今年は最終日を奪ってやりました。下克上です（？）。来年も最終日を狙っていきたいと思います。</p></div><nav class="post-nav" aria-label="前後の記事"><div class="post-nav__item post-nav__item--prev"><span class="post-nav__label">← 前の記事</span><a class="post-nav__title" href="/blog/for-four-years/">Androidエンジニアになってから4年経った振り返り</a></div><div class="post-nav__item post-nav__item--next"><span class="post-nav__label">次の記事 →</span><a class="post-nav__title" href="/blog/droidkaigi-2023/">DroidKaigi2023にスタッフとして参加した話</a></div></nav><aside class="bio"><img src="/_astro/profile-pic.D5hVtBqa_Z243gQL.webp" alt loading="lazy" decoding="async" width="112" height="112" class="bio__image"><div><p class="bio__name">m.coder</p><p class="bio__role">Android App Developer / Engineering Manager</p><ul class="bio__links"><li><a href="https://zenn.dev/m_coder">Zenn</a></li><li><a href="https://github.com/nanaten">GitHub</a></li><li><a href="https://x.com/_m_coder">X</a></li></ul></div></aside></article></main><footer class="footer"><div class="shell footer__inner">© m.coder</div></footer></body></html>

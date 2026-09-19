@@ -1,0 +1,214 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Google I/O What&#39;s new in Jetpack まとめ | m.coder&#39;s Blog</title><meta name="description" content="Google I/O まとめ その3"><link rel="canonical" href="https://nanaten.github.io/blog/google-io-whats-new-in-jetpack/"><link rel="icon" href="/favicon.ico"><meta property="og:title" content="Google I/O What's new in Jetpack まとめ | m.coder's Blog"><meta property="og:description" content="Google I/O まとめ その3"><meta property="og:type" content="article"><meta property="og:url" content="https://nanaten.github.io/blog/google-io-whats-new-in-jetpack/"><meta property="og:image" content="https://nanaten.github.io/ogp-image-default.png"><meta name="twitter:card" content="summary"><meta name="twitter:creator" content="@_m_coder"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans+JP:wght@400;600&display=swap" rel="stylesheet"><script async src="https://www.googletagmanager.com/gtag/js?id=G-GQ4Y7BWNGK"></script><script>(function(){const GA_MEASUREMENT_ID = "G-GQ4Y7BWNGK";
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', GA_MEASUREMENT_ID);
+    })();</script><link rel="stylesheet" href="/_astro/Base.BgdxDaYR.css"></head><body><header class="header"><div class="shell header__inner"><a class="wordmark" href="/">m.coder</a><!-- 「Apps」リンクはルートにアプリ一覧の区画(id="apps")が入る P6 で追加する --><nav class="nav" aria-label="サイト"><a class="nav__link nav__link--current" href="/blog/" aria-current="page">Blog</a></nav></div></header><main class="shell"><article><div class="post-head"><p class="post-head__date"><time datetime="2022-06-03">2022/06/03</time></p><h1 class="post-head__title">Google I/O What&#39;s new in Jetpack まとめ</h1><p class="post-head__desc">Google I/O まとめ その3</p></div><div class="prose"><h2 id="概要">概要</h2>
+<p>主にAndroid開発者目線でGoogle I/Oをまとめていきます。</p>
+<p>3回目 <a href="https://io.google/2022/program/c7710536-a86d-42a6-b43e-e69ae76dbb34/" rel="noopener noreferrer" target="_blank">What’s new in Jetpack</a></p>
+<h2 id="内容">内容</h2>
+<h3 id="room-ライブラリ">Room ライブラリ</h3>
+<ul>
+<li>
+<p>version 2.4</p>
+<ul>
+<li>Kotlin 1.6サポート</li>
+<li>KSPサポート</li>
+</ul>
+</li>
+<li>
+<p>version 2.5</p>
+<ul>
+<li>100% Kotlin への書き換えをスタート</li>
+<li>room-paging ライブラリで Paging 3.0 をサポート</li>
+<li>クエリでネストされたMapや配列などをサポート</li>
+</ul>
+<img src="room_map.png" width="500/">
+<ul>
+<li>DBのマイグレーション簡素化のために <code>@AutoMigration</code> アノテーションをサポート</li>
+</ul>
+</li>
+</ul>
+<h3 id="paging-ライブラリ">Paging ライブラリ</h3>
+<ul>
+<li>Paging 3.1 で Rx と Guava の統合をサポート</li>
+<li>loadResult.Invalid により、無効または古いデータのハンドリングを改善</li>
+<li>onPagesPresented / addOnPagesUpdateListener API により Empty ページでの処理を改善</li>
+<li>Paging 3 の codelab が用意された</li>
+</ul>
+<h3 id="navigation-ライブラリ">Navigation ライブラリ</h3>
+<ul>
+<li>Navigation Compose</li>
+<li>Multiple Backstack が Stable サポート
+<ul>
+<li>コードを変更せずにマルチバックスタックに対応できる</li>
+</ul>
+</li>
+<li>2画面レイアウト対応</li>
+<li>全ての artifact が Kotlin で書き直された</li>
+</ul>
+<h3 id="datastore">DataStore</h3>
+<ul>
+<li>MAD Skills: DataStore を公開
+<ul>
+<li>SharedPreferences から Proto DataStore へのマイグレーション方法を紹介</li>
+</ul>
+</li>
+</ul>
+<h3 id="アーキテクチャ">アーキテクチャ</h3>
+<ul>
+<li>MAD Skills: Architecture
+<ul>
+<li>モダンなAndroid開発のベストプラクティスを紹介</li>
+</ul>
+</li>
+</ul>
+<h3 id="パフォーマンス">パフォーマンス</h3>
+<ul>
+<li>JankStats ライブラリ
+<ul>
+<li>アプリのパフォーマンス問題を追跡・分析するのに役立つライブラリ</li>
+<li>API Level 16 から使用可能</li>
+<li>フレームドロップなどの原因の特定に役立つヒューリスティック</li>
+<li>ユーザーの状態とアクションの属性データ用のUIコンテキストを提供</li>
+<li>レポート結果のアップロードに使用できるコールバックリスナー</li>
+</ul>
+</li>
+<li>Baseline Profiles
+<ul>
+<li>コンパイルの優先順位をつけアプリを高速化</li>
+<li>ユーザーがアプリの初回操作時にドロップするフレームを減らすことが可能</li>
+<li>baseline.prof がAPKに格納される</li>
+<li>独自のベースラインプロファイルを作成可能（Macrobenchmark を利用する必要がある）</li>
+</ul>
+</li>
+<li>Macrobenchmark ライブラリ
+<ul>
+<li>API Level 23 をサポート</li>
+<li>直近の更新によりテスト速度が大幅に向上</li>
+<li>TraceSectionMetric を利用したカステム trace-base タイミング測定など、いくつかの Experimental な機能を追加
+<ul>
+<li>コードの特定のセクションのベンチマークを行うことが可能</li>
+</ul>
+</li>
+<li>BaseLineProfileRule でランタイムの最適化に役立つプロファイルを作成可能</li>
+</ul>
+</li>
+<li>Tracing ライブラリ
+<ul>
+<li>アプリのパフォーマンスプロファイリングに活用可能</li>
+</ul>
+</li>
+</ul>
+<h3 id="ユーザーインターフェース">ユーザーインターフェース</h3>
+<ul>
+<li>
+<p>WindowManager ライブラリ</p>
+<ul>
+<li>API Level 14 からサポート</li>
+<li>フォルダブル端末サポート
+<ul>
+<li>将来的に、より多くの表示タイプ・ウィンドウに拡張予定</li>
+</ul>
+</li>
+<li>SlidingPaneLayout との統合</li>
+</ul>
+</li>
+<li>
+<p>DragAndDrop ライブラリ</p>
+<ul>
+<li>アプリ内外からのドラッグ＆ドロップ操作をサポート</li>
+<li>API Level 24 からサポート</li>
+</ul>
+</li>
+<li>
+<p>AppCompat ライブラリ</p>
+<ul>
+<li>Emoji2 ライブラリと統合し、新しい絵文字をサポート</li>
+<li>カスタム Locale の選択を API Level 14 までバックポート
+<ul>
+<li>アプリ全体の Locale 設定を手動で永続化可能</li>
+</ul>
+</li>
+</ul>
+<img src="./locale-preferences.png" width="600/">
+<ul>
+<li>meta-data タグを利用した自動永続化もサポート</li>
+</ul>
+ <img src="./locale-meta-data.png" width="600/">
+<ul>
+<li>API Level 33 以上では、プラットフォームにより自動的に永続化されるため追加対応は不要</li>
+</ul>
+</li>
+</ul>
+<h3 id="jetpack-compose">Jetpack Compose</h3>
+<p>上位1000アプリ中100アプリが Jetpack Compose を使用</p>
+<img src="./compose-example.png" width="600/">
+<ul>
+<li>
+<p>Nested Scroll Interop</p>
+<ul>
+<li>Compose 1.2 から、 CoordinatorLayout に Scroll Composable をスムーズに埋め込めるようになった</li>
+<li>Collapsing なツールバーの設定が簡単になった</li>
+</ul>
+</li>
+<li>
+<p>Downloadable Fonts</p>
+<ul>
+<li>Compose 1.2 から、ダウンロード可能なフォントを利用可能に</li>
+</ul>
+</li>
+<li>
+<p>Lazy Layouts</p>
+<ul>
+<li>LazyList を Grid やカスタムレイアウトなど、より高度なレイアウトに拡張</li>
+<li>詳細は <a href="https://io.google/2022/program/14bb63ef-2dd1-460a-9871-5f51ec1afec9/" rel="noopener noreferrer" target="_blank">Lazy Layouts in Compose</a> で。</li>
+</ul>
+</li>
+<li>
+<p>Tools</p>
+<ul>
+<li>Android Studio で以下をサポート
+<ul>
+<li>Live Edit</li>
+<li>Recomposition debugging</li>
+<li>Compose Animation Preview</li>
+</ul>
+</li>
+<li>詳細は <a href="https://io.google/2022/program/8215c766-f097-4b18-bc97-5085d77c4dad/" rel="noopener noreferrer" target="_blank">What’s new in Android Studio</a> で。</li>
+</ul>
+</li>
+<li>
+<p>Jetpack Compose 開発のための様々な動画を紹介</p>
+<img src="./compose-videos.png" width="600/">
+</li>
+<li>
+<p><a href="https://developer.android.com/courses/android-basics-compose/course" rel="noopener noreferrer" target="_blank">Android Basics with Compose</a> を公開</p>
+</li>
+<li>
+<p>Jetpack Compose はスマホのみならず、タブレットやフォルダブルなど様々なデバイス向けに推進</p>
+<img src="./compose-multi-devices.png" width="600/">
+</li>
+</ul>
+<h3 id="annotation-ライブラリ">Annotation ライブラリ</h3>
+<ul>
+<li>Kotlin へのマイグレーション作業を行なっている</li>
+<li><code>@Returnthis</code> アノテーションサポート</li>
+<li><code>@OpenForTesting</code> アノテーションでサブクラスのオーバーライドを制限</li>
+<li><code>@EmptySuper</code> アノテーションで親クラスへのoverride呼び出しを制御</li>
+<li><code>@DeprecatedSinceApi</code> アノテーションで特定のAPIレベル以上の使用を制限可能</li>
+</ul>
+<h3 id="その他">その他</h3>
+<ul>
+<li><a href="https://io.google/2022/program/f6863994-eab8-489f-8d62-82c8a9c486ab/" rel="noopener noreferrer" target="_blank">What’s new in Android Media</a></li>
+<li><a href="https://io.google/2022/program/c9085b18-4e8e-4183-b303-1d1716b0c070/" rel="noopener noreferrer" target="_blank">Fragments: The Good (non-deprecated) Parts</a></li>
+<li><a href="https://io.google/2022/program/213421b6-9873-464f-9b36-38eeb232a854/" rel="noopener noreferrer" target="_blank">Common Performance Gotchas in Jetpack Compose</a></li>
+<li>GitHub 紹介
+<ul>
+<li><a href="https://github.com/androidx" rel="noopener noreferrer" target="_blank">https://github.com/androidx</a></li>
+</ul>
+</li>
+</ul></div><nav class="post-nav" aria-label="前後の記事"><div class="post-nav__item post-nav__item--prev"><span class="post-nav__label">← 前の記事</span><a class="post-nav__title" href="/blog/google-io-whats-new-in-android/">Google I/O What&#39;s new in Android まとめ</a></div><div class="post-nav__item post-nav__item--next"><span class="post-nav__label">次の記事 →</span><a class="post-nav__title" href="/blog/google-io-performance-for-jetpack-compose/">Google I/O Common Performance Gotchas in Jetpack Compose まとめ</a></div></nav><aside class="bio"><img src="/_astro/profile-pic.D5hVtBqa_Z243gQL.webp" alt loading="lazy" decoding="async" width="112" height="112" class="bio__image"><div><p class="bio__name">m.coder</p><p class="bio__role">Android App Developer / Engineering Manager</p><ul class="bio__links"><li><a href="https://zenn.dev/m_coder">Zenn</a></li><li><a href="https://github.com/nanaten">GitHub</a></li><li><a href="https://x.com/_m_coder">X</a></li></ul></div></aside></article></main><footer class="footer"><div class="shell footer__inner">© m.coder</div></footer></body></html>
